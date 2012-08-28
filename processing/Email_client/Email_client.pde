@@ -16,6 +16,8 @@ int lastMessageCount;
 boolean firstCheck = true; // revisar que el puerto funciona.
 String[] command;
 
+
+//settings de correo electronico
 String email = "tregolpe@gmail.com"; // conectar al servidor.
 String smtp_host = "smtp.gmail.com";    // Service mail trasfer protocol.
 String imap_host = "imap.gmail.com";    //Internet Message Access Protocol.
