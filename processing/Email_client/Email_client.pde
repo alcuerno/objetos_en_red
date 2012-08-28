@@ -13,16 +13,17 @@ import processing.serial.*;
 Serial ser;
 Message lastMessage;
 int lastMessageCount;
-boolean firstCheck = true;
+boolean firstCheck = true; // revisar que el puerto funciona.
 String[] command;
 
-String email = "usuario@gmail.com";
-String smtp_host = "smtp.gmail.com";
-String imap_host = "imap.gmail.com";
-String pass = "password";
+String email = "tregolpe@gmail.com"; // conectar al servidor.
+String smtp_host = "smtp.gmail.com";    // Service mail trasfer protocol.
+String imap_host = "imap.gmail.com";    //Internet Message Access Protocol.
+String pass = "password"; // autentica.
 
-long past;
+long past; // Declara entero de 32 bits.
 long interval = 10000;
+
 void setup() {
   size(200,200);
   lastMessageCount = 0;
@@ -47,7 +48,7 @@ void checkMail() {
     Properties props = new Properties();
 
     
-    props.put("mail.imap.port", "993");
+    props.put("mail.imap.port", "993"); // sintaxis java mail. ¿Qué  viene siendo esto?
     
     //seguridad
     /*
@@ -71,7 +72,7 @@ void checkMail() {
       if(firstCheck){
         println("first check");
         lastMessageCount = folder.getMessageCount();
-        lastMessage = folder.getMessages()[folder.getMessageCount() - 1];
+          lastMessage = folder.getMessages()[folder.getMessageCount() - 1];
         firstCheck = false;
         
       }else{
@@ -118,7 +119,7 @@ void sendMail() {
   props.put("mail.smtp.auth", "true");
   
   // Necesitamos TLS para gmail
-  props.put("mail.smtp.starttls.enable","true");
+  props.put("mail.smtp.starttls.enable","true");  // Transport layer security. - Autentica.
   /*
   //configuracion para ssl
   props.put("mail.transport.protocol", "smtps");
@@ -139,7 +140,7 @@ void sendMail() {
     message.setFrom(new InternetAddress(email, "Cafetera"));
 
     // Define el destinatario
-    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("zea@randomlab.net", false));
+    message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("tregolpe@hotmail.com", false));
 
     //Asunto y cuerpo del mensaje
     message.setSubject("Hello World!");
